@@ -1,0 +1,1174 @@
+<!DOCTYPE html>
+<html lang="es" data-tema="claro">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>David Perdomo Cardoso · Portafolio de Electrónica Analógica 3 · USCO</title>
+  <meta name="description" content="Portafolio técnico y educativo de David Perdomo Cardoso (integrante del Equipo 6, documentación de ingeniería) en Electrónica Analógica 3, Ingeniería Electrónica, Universidad Surcolombiana: PSoC 5LP, ADC, PMV y puente H.">
+  <meta name="author" content="David Perdomo Cardoso">
+  <meta name="theme-color" content="#8F141B">
+  <meta property="og:title" content="Portafolio · Electrónica Analógica 3 · David Perdomo Cardoso">
+  <meta property="og:description" content="Seis proyectos con PSoC 5LP: del ADC con LDR al módulo expansor de puente H verificado por peor caso.">
+  <meta property="og:image" content="assets/img/perfil-david.jpg">
+  <link rel="icon" type="image/png" href="assets/img/logo-usco.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css">
+  <noscript><style>.panel{display:block!important}.revelar{opacity:1!important;transform:none!important}</style></noscript>
+</head>
+<body>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+
+<!-- Iconos reutilizables -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-descargar" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M12 3v12m0 0-4.5-4.5M12 15l4.5-4.5M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/></symbol>
+  <symbol id="i-ojo" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+  <symbol id="i-flecha" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M5 12h14m-5-5 5 5-5 5"/></symbol>
+  <symbol id="i-chip" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/></g></symbol>
+  <symbol id="i-onda" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M2 12c2.5-6 4.5-6 7 0s4.5 6 7 0 4-4 6-2"/></symbol>
+  <symbol id="i-libro" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 19.5V5a2 2 0 0 1 2-2h13v16H6.5A2.5 2.5 0 0 0 4 21.5 2.5 2.5 0 0 0 6.5 24H19M8 7h7M8 11h5"/></symbol>
+  <symbol id="i-corona" viewBox="0 0 24 24"><path fill="currentColor" d="M3 7l4.5 4L12 4l4.5 7L21 7l-2 12H5L3 7Z"/></symbol>
+  <symbol id="i-codigo" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m8 8-4 4 4 4m8-8 4 4-4 4M14 4l-4 16"/></symbol>
+</svg>
+
+<header class="cabecera">
+  <div class="contenedor cabecera__fila">
+    <a class="logo-placa" href="#inicio" data-ir="inicio" aria-label="Ir al inicio">
+      <img src="assets/img/logo-usco.png" alt="Universidad Surcolombiana · Facultad de Ingeniería" width="123" height="40">
+    </a>
+    <div class="cabecera__titulo">
+      <strong>Portafolio · Electrónica Analógica 3</strong>
+      <span>Programa de Ingeniería Electrónica · David Perdomo Cardoso</span>
+    </div>
+    <div class="cabecera__acciones">
+      <button class="boton-circular" id="boton-tema" type="button" aria-pressed="false" aria-label="Cambiar entre modo claro y oscuro" title="Modo claro / oscuro">
+        <svg class="icono-luna" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 14.5A9 9 0 0 1 9.5 3a7.5 7.5 0 1 0 11.5 11.5Z"/></svg>
+        <svg class="icono-sol" viewBox="0 0 24 24" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 1.5v2.5M12 20v2.5M1.5 12H4M20 12h2.5M4.6 4.6l1.8 1.8M17.6 17.6l1.8 1.8M4.6 19.4l1.8-1.8M17.6 6.4l1.8-1.8"/></g></svg>
+      </button>
+    </div>
+  </div>
+  <nav class="pestanas" aria-label="Proyectos del portafolio">
+    <div class="contenedor" style="position:relative">
+      <div class="pestanas__lista" role="tablist">
+        <button class="pestana" role="tab" id="tab-inicio" aria-controls="inicio" aria-selected="true">Inicio / Resumen</button>
+        <button class="pestana" role="tab" id="tab-p1" aria-controls="proyecto-1" aria-selected="false"><span class="num">P1</span>ADC con LDR + Libro</button>
+        <button class="pestana" role="tab" id="tab-p2" aria-controls="proyecto-2" aria-selected="false"><span class="num">P2</span>Concepción</button>
+        <button class="pestana" role="tab" id="tab-p3" aria-controls="proyecto-3" aria-selected="false"><span class="num">P3</span>Póster NFC</button>
+        <button class="pestana" role="tab" id="tab-p4" aria-controls="proyecto-4" aria-selected="false"><span class="num">P4</span>Del Puente H al PMV</button>
+        <button class="pestana" role="tab" id="tab-p5" aria-controls="proyecto-5" aria-selected="false"><span class="num">P5</span>Puente H por hojas de datos</button>
+        <button class="pestana" role="tab" id="tab-p6" aria-controls="proyecto-6" aria-selected="false"><span class="num">P6</span>Módulo expansor V2</button>
+        <span class="pestanas__indicador" aria-hidden="true"></span>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main id="contenido">
+
+<!-- =====================================================================
+     INICIO / RESUMEN
+     ===================================================================== -->
+<section class="panel" id="inicio" role="tabpanel" aria-labelledby="tab-inicio">
+  <div class="hero">
+    <canvas id="senal-hero" aria-hidden="true"></canvas>
+    <div class="contenedor">
+      <div class="hero__contenido">
+        <div class="foto-marco">
+          <img src="assets/img/perfil-david.jpg" alt="Fotografía de David Perdomo Cardoso" width="540" height="720">
+        </div>
+        <div>
+          <span class="insignia"><svg aria-hidden="true"><use href="#i-libro"/></svg>Integrante · Equipo 6</span>
+          <h1>David Perdomo Cardoso</h1>
+          <p class="hero__subtitulo">Estudiante de Ingeniería Electrónica · Universidad Surcolombiana</p>
+          <p class="hero__texto">Integrante del Equipo 6 de Electrónica Analógica 3, responsable de la documentación de ingeniería y el seguimiento experimental de los proyectos del semestre. Como soporte directo a las fases de diseño y montaje, asumí la elaboración y estandarización de las bitácoras de avance y los informes finales de cada entrega, detallando memorias de cálculo, parámetros de operación, contraste entre valores teóricos y medidos, y resolución de fallos. El presente portafolio compila toda esta evidencia técnica de manera ordenada y reproducible, reflejando la metodología aplicada y el aprendizaje consolidado por el equipo.</p>
+          <div class="hero__chips">
+            <span class="chip">PSoC 5LP · CY8CKIT-059</span>
+            <span class="chip">ADC Delta-Sigma</span>
+            <span class="chip">Bitácoras de ingeniería</span>
+            <span class="chip">Informes técnicos IEEE</span>
+            <span class="chip">Seguimiento experimental</span>
+          </div>
+        </div>
+      </div>
+      <div class="metricas revelar">
+        <div class="metrica"><div class="metrica__valor" data-contador="6">0</div><div class="metrica__etiqueta">proyectos documentados en el curso</div></div>
+        <div class="metrica"><div class="metrica__valor" data-contador="11">0</div><div class="metrica__etiqueta">informes y bitácoras técnicas del equipo publicados aquí</div></div>
+        <div class="metrica"><div class="metrica__valor" data-contador="0.993" data-decimales="3">0</div><div class="metrica__etiqueta">R² de la curva de calibración de la LDR</div></div>
+        <div class="metrica"><div class="metrica__valor" data-contador="13">0</div><div class="metrica__etiqueta">márgenes de peor caso verificados en el puente H V2</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="contenedor">
+    <section class="seccion">
+      <div class="seccion__titulo revelar">
+        <h2>Resumen del trabajo del equipo</h2>
+        <p>Electrónica Analógica 3 · Periodo 2026-B · Docente: Ing. Julián Adolfo Ramírez. Seis proyectos encadenados alrededor de la tarjeta PSoC 5LP (CY8CKIT-059), siguiendo el ciclo <strong>Construir → Medir → Aprender</strong>.</p>
+      </div>
+      <div class="rejilla rejilla-2" style="margin-bottom:1.4rem">
+        <div class="tarjeta revelar">
+          <h3 style="color:var(--vino)">Recorrido técnico</h3>
+          <p>Empezamos explorando un recurso analógico de la PSoC: un ADC Delta-Sigma de 16 bits leyendo una fotorresistencia. Luego aprendimos a <strong>concebir</strong> una solución con evidencia (Customer Discovery y gates), a <strong>comunicarla</strong> en un póster de 80 × 160 cm y a llevarla a un <strong>PMV</strong>. El cierre fue volver al puente H con un proceso de diseño basado en hojas de datos, hasta un rediseño V2 preparado para fabricación.</p>
+        </div>
+        <div class="tarjeta revelar">
+          <h3 style="color:var(--vino)">Retos superados</h3>
+          <ul class="puntos">
+            <li>Saturación del ADC y desbordamiento aritmético en el firmware de la LDR.</li>
+            <li>Una idea (registro NFC) refutada con evidencia y un pivote a la placa de puente H.</li>
+            <li>Relés que no conmutaban en el PMV: se corrigió la etapa de potencia con cálculo de peor caso.</li>
+            <li>Diseño para fabricación en JLCPCB por debajo del límite de USD 20.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="seccion__titulo revelar" style="margin-top:2.4rem">
+        <h2>Proyectos del curso</h2>
+        <p>Selecciona una tarjeta para abrir la ficha técnica y educativa completa.</p>
+      </div>
+      <div class="recorrido">
+        <button class="tarjeta tarjeta--elevable acceso revelar" data-ir="proyecto-1">
+          <span class="acceso__num">PROYECTO 1</span>
+          <h3>ADC con sensor resistivo (LDR) + Libro de guías</h3>
+          <p>Divisor de tensión, ADC Delta-Sigma de 16 bits y UART a 57 600 bps. Incluye el libro con los capítulos de todos los grupos.</p>
+          <span class="acceso__ir">Ver proyecto <svg aria-hidden="true"><use href="#i-flecha"/></svg></span>
+        </button>
+        <button class="tarjeta tarjeta--elevable acceso revelar" data-ir="proyecto-2">
+          <span class="acceso__num">PROYECTO 2</span>
+          <h3>Concepción de una solución electrónica</h3>
+          <p>Cuatro gates, nueve evidencias de campo, un pivote y la placa expansora de puente H como concepto final.</p>
+          <span class="acceso__ir">Ver proyecto <svg aria-hidden="true"><use href="#i-flecha"/></svg></span>
+        </button>
+        <button class="tarjeta tarjeta--elevable acceso revelar" data-ir="proyecto-3">
+          <span class="acceso__num">PROYECTO 3</span>
+          <h3>Póster divulgativo «Del cuaderno al terminal NFC»</h3>
+          <p>Cinco iteraciones visuales hasta una pieza vertical de 80 × 160 cm que comunica el proceso de concepción.</p>
+          <span class="acceso__ir">Ver proyecto <svg aria-hidden="true"><use href="#i-flecha"/></svg></span>
+        </button>
+        <button class="tarjeta tarjeta--elevable acceso revelar" data-ir="proyecto-4">
+          <span class="acceso__num">PROYECTO 4</span>
+          <h3>Del Puente H al PMV de sensores</h3>
+          <p>Dos intentos de puente H y el pivote a una tarjeta de expansión DHT11 + YL-38 con firmware de 4 modos.</p>
+          <span class="acceso__ir">Ver proyecto <svg aria-hidden="true"><use href="#i-flecha"/></svg></span>
+        </button>
+        <button class="tarjeta tarjeta--elevable acceso revelar" data-ir="proyecto-5">
+          <span class="acceso__num">PROYECTO 5</span>
+          <h3>Retorno al puente H con hojas de datos</h3>
+          <p>Etapa de potencia recalculada, simulación de los 4 estados y PCB de dos capas con revisiones R1 a R4.</p>
+          <span class="acceso__ir">Ver proyecto <svg aria-hidden="true"><use href="#i-flecha"/></svg></span>
+        </button>
+        <button class="tarjeta tarjeta--elevable acceso revelar" data-ir="proyecto-6">
+          <span class="acceso__num">PROYECTO 6</span>
+          <h3>Módulo expansor de puente H V2</h3>
+          <p>Excitación por MOSFET AO3400A, relés de 12 V, diodos Schottky y 13 márgenes de peor caso por encima de ×1.</p>
+          <span class="acceso__ir">Ver proyecto <svg aria-hidden="true"><use href="#i-flecha"/></svg></span>
+        </button>
+      </div>
+    </section>
+
+    <section class="seccion">
+      <div class="seccion__titulo revelar">
+        <h2>Herramientas empleadas</h2>
+      </div>
+      <div class="lista-herramientas revelar">
+        <span class="herramienta"><b>PSoC Creator</b> 4.4</span>
+        <span class="herramienta"><b>CY8CKIT-059</b> PSoC 5LP</span>
+        <span class="herramienta"><b>Proteus</b> simulación y PCB</span>
+        <span class="herramienta"><b>KiCad</b> PCB del PMV</span>
+        <span class="herramienta"><b>PuTTY</b> terminal UART</span>
+        <span class="herramienta"><b>LaTeX</b> libro colaborativo</span>
+        <span class="herramienta"><b>C</b> firmware embebido</span>
+        <span class="herramienta"><b>Osciloscopio</b> y multímetro</span>
+        <span class="herramienta"><b>JLCPCB</b> reglas de fabricación</span>
+      </div>
+    </section>
+
+    <section class="seccion" id="equipo">
+      <div class="seccion__titulo revelar">
+        <h2>Equipo de trabajo · Créditos y roles</h2>
+        <p>Equipo 6 · Programa de Ingeniería Electrónica, Facultad de Ingeniería, Universidad Surcolombiana.</p>
+      </div>
+      <div class="equipo">
+        <article class="tarjeta miembro miembro--lider revelar">
+          <img src="assets/img/perfil-david.jpg" alt="David Perdomo Cardoso" width="120" height="120" loading="lazy">
+          <div>
+            <span class="insignia"><svg aria-hidden="true"><use href="#i-libro"/></svg>Integrante · Equipo 6</span>
+            <h3 style="margin-top:.6rem;font-size:1.35rem">David Perdomo Cardoso</h3>
+            <p>Responsable de la documentación de ingeniería y del seguimiento experimental: elaboración y estandarización de las bitácoras de avance y de los informes finales de cada entrega, con memorias de cálculo, parámetros de operación, contraste teórico-medido y resolución de fallos.</p>
+            <div class="etiquetas">
+              <span class="etiqueta">Documentación de ingeniería</span><span class="etiqueta">Bitácoras</span><span class="etiqueta">Informes finales</span><span class="etiqueta">Memorias de cálculo</span><span class="etiqueta">Seguimiento experimental</span>
+            </div>
+          </div>
+        </article>
+        <article class="tarjeta tarjeta--elevable miembro revelar">
+          <div class="avatar" aria-hidden="true">DG</div>
+          <h3>Daniel García Trujillo</h3>
+          <div class="miembro__rol">Líder del Equipo 6</div>
+          <p>Defensa de los proyectos, diseño e implementación de PCB, simulaciones, mediciones y programación. Compilador del libro de guías del Proyecto 1.</p>
+          <div class="etiquetas"><span class="etiqueta">Liderazgo</span><span class="etiqueta">PCB</span><span class="etiqueta">Programación</span></div>
+        </article>
+        <article class="tarjeta tarjeta--elevable miembro revelar">
+          <div class="avatar" aria-hidden="true">JM</div>
+          <h3>Juan Camilo Monje Rivas</h3>
+          <div class="miembro__rol">Desarrollo técnico, hardware y programación</div>
+          <p>PCB, simulaciones, mediciones, programación y áreas técnicas relacionadas.</p>
+          <div class="etiquetas"><span class="etiqueta">PCB</span><span class="etiqueta">Simulaciones</span><span class="etiqueta">Mediciones</span><span class="etiqueta">Programación</span></div>
+        </article>
+        <article class="tarjeta tarjeta--elevable miembro revelar">
+          <div class="avatar" aria-hidden="true">HO</div>
+          <h3>Horus Samuel Ordoñez Dussán</h3>
+          <div class="miembro__rol">Diseño gráfico y divulgación</div>
+          <p>Creación de todos los pósteres de los proyectos.</p>
+          <div class="etiquetas"><span class="etiqueta">Pósteres</span><span class="etiqueta">Comunicación visual</span></div>
+        </article>
+        <article class="tarjeta tarjeta--elevable miembro revelar">
+          <div class="avatar" aria-hidden="true">JI</div>
+          <h3>Juan David Iriarte Trilleras</h3>
+          <div class="miembro__rol">Desarrollo y documentación</div>
+          <p>Desarrollo del Proyecto 1 (investigación, montaje y pruebas), informes y bitácoras del Proyecto 2, documentación del Proyecto 4, y rediseño y documentación del Proyecto 5.</p>
+          <div class="etiquetas"><span class="etiqueta">Montaje y pruebas</span><span class="etiqueta">Documentación</span><span class="etiqueta">Rediseño</span></div>
+        </article>
+      </div>
+    </section>
+  </div>
+</section>
+
+<!-- =====================================================================
+     PROYECTO 1
+     ===================================================================== -->
+<section class="panel" id="proyecto-1" role="tabpanel" aria-labelledby="tab-p1" hidden>
+  <div class="ficha-cabecera">
+    <div class="contenedor">
+      <div class="numero">PROYECTO 1 · EXPLORACIÓN ANALÓGICA CON PSOC 5LP</div>
+      <h1>ADC con sensor resistivo sencillo: caracterización de una LDR</h1>
+      <p class="resumen">Sistema de adquisición en tiempo real que acondiciona una fotorresistencia GL10516 con un divisor de tensión, la digitaliza con el ADC Delta-Sigma interno a 16 bits y transmite voltaje y porcentaje de luminosidad por UART a 57 600 bps. El sistema aprovecha el 98,6 % del rango dinámico del ADC y sus curvas de calibración alcanzan R² = 0,987 y R² = 0,993.</p>
+      <div class="hero__chips" style="justify-content:flex-start">
+        <span class="chip">ADC Delta-Sigma 16 bits</span><span class="chip">Divisor de tensión</span><span class="chip">UART 57 600 bps</span><span class="chip">Calibración lineal</span><span class="chip">LaTeX colaborativo</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="contenedor">
+    <div class="bloque revelar">
+      <div class="destacado credito-libro">
+        <div class="credito-libro__icono"><svg aria-hidden="true"><use href="#i-libro"/></svg></div>
+        <div>
+          <span class="sello"><svg width="14" height="14" aria-hidden="true"><use href="#i-corona"/></svg>Compilación: Daniel García Trujillo</span>
+          <h3>Libro de guías «Primeros experimentos analógicos con PSoC 5LP»</h3>
+          <p>El Proyecto 1 se planteó como un documento colaborativo en LaTeX: cada equipo del curso exploró un recurso analógico distinto de la PSoC 5LP y aportó un capítulo. <strong>Daniel García Trujillo desarrolló y compiló el libro completo</strong>, integrando la documentación de todos los grupos en un solo manual de 40 páginas y 6 capítulos: ADC y potenciómetro, DAC de tensión, comparador analógico, amplificador o PGA, ADC con sensor resistivo sencillo (el capítulo de nuestro equipo) y generación y medición de una señal analógica.</p>
+          <div class="descarga__botones">
+            <a class="btn btn--vino" href="assets/proyectos/proyecto-01/libro-guias-grupos.pdf" download><svg aria-hidden="true"><use href="#i-descargar"/></svg>Descargar libro (PDF)</a>
+            <a class="btn btn--contorno" href="assets/proyectos/proyecto-01/libro-guias-grupos.pdf" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ojo"/></svg>Ver PDF</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Objetivo y planteamiento</h2>
+      <div class="texto-largo">
+        <p>La guía del curso pedía explorar de forma práctica <strong>una sola función analógica</strong> de la tarjeta CY8CKIT-059, con mínimos componentes externos, siguiendo tres semanas: <em>Construir</em> (primer resultado funcional), <em>Medir</em> (entre 6 y 10 mediciones, tabla y gráfica) y <em>Aprender y documentar</em> (capítulo reproducible en LaTeX). Al Equipo 6 le correspondió el experimento «ADC con sensor resistivo sencillo, como LDR o termistor».</p>
+        <ul class="puntos">
+          <li>Diseñar un acondicionamiento (divisor de tensión) que aproveche el máximo rango dinámico de la LDR GL10516 en la entrada analógica.</li>
+          <li>Configurar el ADC Delta-Sigma a 16 bits y transmitir en tiempo real el voltaje y el porcentaje de luminosidad por UART.</li>
+          <li>Calibrar la relación voltaje–luminosidad y evaluar su linealidad con regresión y coeficiente de determinación (R²).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Fundamento teórico</h2>
+      <div class="rejilla rejilla-2">
+        <div class="tarjeta">
+          <h3 style="margin-top:0">La fotorresistencia GL10516</h3>
+          <p>Es una LDR de sulfuro de cadmio (CdS) cuya resistencia baja de forma no lineal cuando aumenta la luz: de unos <span class="mono">2 MΩ</span> en oscuridad a unos <span class="mono">90 Ω</span> con luz intensa. Su respuesta dinámica está limitada por la inercia fotoquímica (t<sub>r</sub> = 20 ms, t<sub>f</sub> = 30 ms), lo que fija su ancho de banda óptico:</p>
+          <div class="formula">f<sub>corte</sub> ≈ 1 / (t<sub>r</sub> + t<sub>f</sub>) = 1 / 50 ms = 20 Hz</div>
+        </div>
+        <div class="tarjeta">
+          <h3 style="margin-top:0">El ADC Delta-Sigma de la PSoC 5LP</h3>
+          <p>Un modulador Delta-Sigma sobremuestrea la señal y desplaza el ruido de cuantización fuera de la banda; luego un decimador digital filtra y entrega la resolución elegida (de 8 a 20 bits). La conversión de cuentas a voltaje es:</p>
+          <div class="formula">V<sub>mV</sub> = (cuentas / 2<sup>N</sup>) · V<sub>REF,mV</sub> <span class="nota">N = 16 → 65 536 niveles</span></div>
+          <p style="margin:0">El firmware final usa la API calibrada <code>ADC_DelSig_1_CountsTo_mVolts()</code> en lugar de un escalado manual.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Diseño del circuito y selección de componentes</h2>
+      <div class="texto-largo">
+        <p>Se compararon dos topologías para llevar la variación resistiva a la entrada unipolar del ADC. El puente de Wheatstone exige que ΔR ≪ R (pequeña señal), algo imposible con una LDR que cambia cuatro órdenes de magnitud; por eso se eligió el <strong>divisor de tensión</strong>:</p>
+        <div class="formula">V<sub>out</sub> = V<sub>DD</sub> · R<sub>LDR</sub> / (R<sub>fija</sub> + R<sub>LDR</sub>)</div>
+        <p>La resistencia de carga óptima es la media geométrica de los extremos del sensor:</p>
+        <div class="formula">R<sub>fija,opt</sub> = √(R<sub>min</sub> · R<sub>max</sub>) = √(90 · 2×10⁶) Ω ≈ 13,42 kΩ <span class="nota">→ valor comercial E24: 10 kΩ</span></div>
+        <p>Con <strong>10 kΩ</strong> la tensión de entrada va de 24 mV (oscuridad) a 4,816 V (luz directa): el 98,6 % del rango del ADC, sin saturar y con un consumo ≤ 0,48 mA.</p>
+      </div>
+      <div class="tabla-envoltura" style="margin-top:1rem">
+        <table>
+          <thead><tr><th>Bloque</th><th>Instancia</th><th>Configuración</th></tr></thead>
+          <tbody>
+            <tr><td>ADC Delta-Sigma</td><td class="mono">ADC_DelSig_1</td><td>Continuo, 16 bits, rango Vssa–Vdda, buffer Rail-to-Rail</td></tr>
+            <tr><td>UART</td><td class="mono">UART_1</td><td>Full UART (TX+RX), 57 600 bps, 8 bits, sin paridad, 1 bit de parada</td></tr>
+            <tr><td>Pin analógico</td><td class="mono">Pin_1 · P0[0]</td><td>Alta impedancia, entrada del divisor</td></tr>
+            <tr><td>Comunicación</td><td class="mono">P12[6] / P12[7]</td><td>Rx / Tx hacia el KitProg (USB–UART)</td></tr>
+            <tr><td>Indicador</td><td class="mono">LED · P2[1]</td><td>Indicador visual de estado</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Evolución del firmware: Construir → Medir → Aprender</h2>
+      <div class="pasos">
+        <div class="tarjeta paso fallo"><h3>R<sub>fija</sub> = 330 Ω y ADC de 12 bits <span class="estado estado--fallo">Corregido</span></h3><p>La señal quedaba comprimida en 31,8 mV y había desborde del ADC con luz intensa: 330 Ω está muy por debajo de la resistencia típica de la LDR.</p></div>
+        <div class="tarjeta paso"><h3>R<sub>fija</sub> = 10 kΩ y ADC de 16 bits</h3><p>Se habilitó la conexión por hardware y se obtuvo la primera transmisión estable, pendiente de recalibrar.</p></div>
+        <div class="tarjeta paso fallo"><h3>Escalado manual (×43 800) <span class="estado estado--fallo">Corregido</span></h3><p>Con luz alta se desbordaba el entero de 32 bits; además el rango Vssa–Vref (1,024 V) era insuficiente y bloqueaba el microcontrolador.</p></div>
+        <div class="tarjeta paso exito"><h3>API nativa <code>CountsTo_mVolts()</code> y rango Vssa–Vdda <span class="estado estado--ok">Final</span></h3><p>Transmisión limpia, estable y calibrada. La salida local por LCD I²C se evaluó en paralelo, pero se priorizó la UART como canal principal.</p></div>
+      </div>
+    </div>
+
+    <details class="acordeon revelar">
+      <summary>Resultados por condición de iluminación y fuentes de error</summary>
+      <div class="acordeon__cuerpo">
+        <div class="tabla-envoltura">
+          <table>
+            <thead><tr><th>Condición</th><th>R<sub>LDR</sub></th><th>V<sub>out</sub></th><th>Luz (%)</th></tr></thead>
+            <tbody>
+              <tr><td>Oscuridad total</td><td class="mono">2,00 MΩ</td><td class="mono">0,024 V</td><td class="mono">0 %</td></tr>
+              <tr><td>Sombra / penumbra</td><td class="mono">50,0 kΩ</td><td class="mono">0,810 V</td><td class="mono">9,3 %</td></tr>
+              <tr><td>Luz ambiente normal</td><td class="mono">10,0 kΩ</td><td class="mono">2,430 V</td><td class="mono">46,3 %</td></tr>
+              <tr><td>Luz intensa directa</td><td class="mono">90 Ω</td><td class="mono">4,816 V</td><td class="mono">100,0 %</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="margin-top:1rem">La principal fuente de error fue sistemática: la API asume V<sub>DDA</sub> = 5,000 V, pero la tarjeta trabajaba a 4,86 V por USB, lo que producía un desfase de 150–200 mV. Se corrigió con escalado ratiométrico en firmware, eliminando un error de ganancia del 2,88 %. En la transición de luz se midieron 20 ms de subida (10 % → 90 %) y 30 ms de bajada, coherentes con la hoja de datos: la dinámica la impone el CdS, no la PSoC.</p>
+      </div>
+    </details>
+
+    <div class="bloque revelar">
+      <h2>Calibración: voltaje frente a luminosidad</h2>
+      <div class="rejilla rejilla-2">
+        <div class="tarjeta">
+          <svg class="grafica" viewBox="0 0 420 260" role="img" aria-label="Rectas de calibración L = 23,33V − 10,66 y L = 22,44V − 6,73">
+            <g class="malla">
+              <line x1="50" y1="20" x2="400" y2="20"/><line x1="50" y1="70" x2="400" y2="70"/><line x1="50" y1="120" x2="400" y2="120"/><line x1="50" y1="170" x2="400" y2="170"/>
+              <line x1="120" y1="20" x2="120" y2="220"/><line x1="190" y1="20" x2="190" y2="220"/><line x1="260" y1="20" x2="260" y2="220"/><line x1="330" y1="20" x2="330" y2="220"/><line x1="400" y1="20" x2="400" y2="220"/>
+            </g>
+            <line class="eje" x1="50" y1="220" x2="400" y2="220"/><line class="eje" x1="50" y1="20" x2="50" y2="220"/>
+            <text x="44" y="224" text-anchor="end">0</text><text x="44" y="124" text-anchor="end">50</text><text x="44" y="24" text-anchor="end">100</text>
+            <text x="50" y="238" text-anchor="middle">0</text><text x="120" y="238" text-anchor="middle">1</text><text x="190" y="238" text-anchor="middle">2</text><text x="260" y="238" text-anchor="middle">3</text><text x="330" y="238" text-anchor="middle">4</text><text x="400" y="238" text-anchor="middle">5</text>
+            <text x="225" y="256" text-anchor="middle">Voltaje (V)</text>
+            <text x="14" y="120" text-anchor="middle" transform="rotate(-90 14 120)">Luminosidad (%)</text>
+            <line x1="85" y1="218" x2="379" y2="22" stroke="#B5974E" stroke-width="3" stroke-linecap="round"/>
+            <line x1="71" y1="220" x2="382.5" y2="20.3" stroke="#8F141B" stroke-width="3" stroke-dasharray="7 5" stroke-linecap="round"/>
+            <rect x="62" y="28" width="196" height="44" rx="6" fill="var(--tarjeta)" stroke="var(--borde)"/>
+            <line x1="70" y1="42" x2="92" y2="42" stroke="#B5974E" stroke-width="3"/><text x="98" y="46">Cruda: R² = 0,987</text>
+            <line x1="70" y1="60" x2="92" y2="60" stroke="#8F141B" stroke-width="3" stroke-dasharray="7 5"/><text x="98" y="64">Ajustada: R² = 0,993</text>
+          </svg>
+          <p style="font-size:.84rem;color:var(--texto-suave);margin:.4rem 0 0">Rectas de regresión reportadas en el informe con 50 muestras continuas. Las figuras originales con los puntos medidos están en la galería.</p>
+        </div>
+        <div class="tarjeta">
+          <h3 style="margin-top:0">Modelos de calibración</h3>
+          <div class="formula">L = 23,33·V − 10,66 <span class="nota">cruda · R² = 0,987</span></div>
+          <div class="formula">L = 22,44·V − 6,73 <span class="nota">cruce forzado en 0,3 V · R² = 0,993</span></div>
+          <p>Ambos coeficientes, muy cercanos a 1, confirman una relación fuertemente lineal entre el voltaje digitalizado y la luminosidad percibida en el rango de trabajo. La resolución de 16 bits (65 536 niveles frente a 4 096 de 12 bits) permite distinguir cerca de 0,044 V por cada 1 % de luminosidad con margen sobre el ruido.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Simulación, montaje y resultados</h2>
+      <div class="galeria">
+        <figure class="figura figura--ancha" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-01/img/topdesign-psoc.png" alt="TopDesign en PSoC Creator" loading="lazy"></div><figcaption>TopDesign: Pin_1 (P0[0]) → ADC_DelSig_1 (16 bits) → UART_1 (57 600 bps).</figcaption></figure>
+        <figure class="figura" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-01/img/config-adc-delsig.png" alt="Configuración del ADC Delta-Sigma" loading="lazy"></div><figcaption>Configuración del ADC: continuo, 16 bits, Vssa–Vdda, Rail-to-Rail.</figcaption></figure>
+        <figure class="figura" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-01/img/config-uart.png" alt="Configuración de la UART" loading="lazy"></div><figcaption>Configuración de la UART a 57 600 bps.</figcaption></figure>
+        <figure class="figura" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-01/img/asignacion-pines.png" alt="Asignación de pines" loading="lazy"></div><figcaption>Asignación de pines en el editor .cydwr.</figcaption></figure>
+        <figure class="figura" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-01/img/putty-mediciones.png" alt="Lecturas en PuTTY" loading="lazy"></div><figcaption>PuTTY con el firmware final: voltaje y luminosidad en tiempo real.</figcaption></figure>
+        <figure class="figura" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-01/img/curva-calibracion-cruda.png" alt="Curva de calibración cruda" loading="lazy"></div><figcaption>Curva cruda (R² = 0,987).</figcaption></figure>
+        <figure class="figura" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-01/img/curva-calibracion-ajustada.png" alt="Curva de calibración ajustada" loading="lazy"></div><figcaption>Curva ajustada con cruce en 0,3 V (R² = 0,993).</figcaption></figure>
+      </div>
+      <h3>Video de la toma de datos</h3>
+      <div class="video-envoltura" style="max-width:720px">
+        <video controls preload="metadata" playsinline>
+          <source src="assets/proyectos/proyecto-01/video-toma-de-datos.mp4" type="video/mp4">
+          Tu navegador no reproduce video MP4.
+        </video>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Documentación y descargas</h2>
+      <div class="descargas">
+        <article class="tarjeta descarga descarga--principal">
+          <span class="descarga__tipo">Informe final · PDF</span>
+          <h3>Informe del proyecto LDR (Equipo 6)</h3>
+          <p>Diseño, evolución del firmware, problemas y soluciones, resultados y calibración. <span class="peso">670 KB</span></p>
+          <div class="descarga__botones">
+            <a class="btn btn--vino" href="assets/proyectos/proyecto-01/informe-ldr.pdf" download><svg aria-hidden="true"><use href="#i-descargar"/></svg>Descargar Informe (PDF)</a>
+            <a class="btn btn--contorno" href="assets/proyectos/proyecto-01/informe-ldr.pdf" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ojo"/></svg>Ver PDF</a>
+          </div>
+        </article>
+        <article class="tarjeta descarga descarga--principal">
+          <span class="descarga__tipo">Libro de guías · PDF</span>
+          <h3>Libro de guías de todos los grupos</h3>
+          <p>«Primeros experimentos analógicos con PSoC 5LP», 6 capítulos. Compilado por Daniel García Trujillo. <span class="peso">5.4 MB</span></p>
+          <div class="descarga__botones">
+            <a class="btn btn--vino" href="assets/proyectos/proyecto-01/libro-guias-grupos.pdf" download><svg aria-hidden="true"><use href="#i-descargar"/></svg>Descargar Libro (PDF)</a>
+            <a class="btn btn--contorno" href="assets/proyectos/proyecto-01/libro-guias-grupos.pdf" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ojo"/></svg>Ver PDF</a>
+          </div>
+        </article>
+        <article class="tarjeta descarga">
+          <span class="descarga__tipo">Simulación · .pdsprj</span>
+          <h3>Simulación del divisor con LDR en Proteus</h3>
+          <p>Proyecto de Proteus con la LDR y su acondicionamiento. <span class="peso">17 KB</span></p>
+          <div class="descarga__botones"><a class="btn btn--dorado" href="assets/proyectos/proyecto-01/simulacion-ldr-proteus.pdsprj" download><svg aria-hidden="true"><use href="#i-descargar"/></svg>Descargar Simulación (.pdsprj)</a></div>
+        </article>
+        <article class="tarjeta descarga">
+          <span class="descarga__tipo">Firmware · .zip</span>
+          <h3>Proyecto de PSoC Creator</h3>
+          <p>Workspace con ADC Delta-Sigma, UART y LCD I²C para la lectura de la LDR. <span class="peso">3.1 MB</span></p>
+          <div class="descarga__botones"><a class="btn btn--dorado" href="assets/proyectos/proyecto-01/firmware-ldr-psoc.zip" download><svg aria-hidden="true"><use href="#i-codigo"/></svg>Descargar Firmware (.zip)</a></div>
+        </article>
+        <article class="tarjeta descarga">
+          <span class="descarga__tipo">Bitácora · PDF</span>
+          <h3>Bitácora 1: caracterización de la LDR</h3>
+          <p>Registro de las sesiones, calculado frente a medido y análisis. <span class="peso">220 KB</span></p>
+          <div class="descarga__botones">
+            <a class="btn btn--contorno" href="assets/proyectos/proyecto-01/bitacora-ldr.pdf" download><svg aria-hidden="true"><use href="#i-descargar"/></svg>Descargar</a>
+            <a class="btn btn--contorno" href="assets/proyectos/proyecto-01/bitacora-ldr.pdf" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ojo"/></svg>Ver PDF</a>
+          </div>
+        </article>
+        <article class="tarjeta descarga">
+          <span class="descarga__tipo">Presentación · .pptx</span>
+          <h3>Diapositivas de la sustentación</h3>
+          <p>Presentación del Proyecto 1 del Equipo 6. <span class="peso">448 KB</span></p>
+          <div class="descarga__botones"><a class="btn btn--contorno" href="assets/proyectos/proyecto-01/diapositivas-ldr.pptx" download><svg aria-hidden="true"><use href="#i-descargar"/></svg>Descargar (.pptx)</a></div>
+        </article>
+        <article class="tarjeta descarga">
+          <span class="descarga__tipo">Anexo · PDF</span>
+          <h3>Práctica 1: Hola Mundo con la CY8CKIT-059</h3>
+          <p>Primer flujo en PSoC Creator 4.4: pin P2[1], compilación, programación y LED intermitente. <span class="peso">738 KB</span></p>
+          <div class="descarga__botones">
+            <a class="btn btn--contorno" href="assets/proyectos/proyecto-01/practica-1-hola-mundo.pdf" download><svg aria-hidden="true"><use href="#i-descargar"/></svg>Descargar</a>
+            <a class="btn btn--contorno" href="assets/proyectos/proyecto-01/practica-1-hola-mundo.pdf" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ojo"/></svg>Ver PDF</a>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Conclusiones y aprendizajes</h2>
+      <div class="aprendizajes">
+        <div class="tarjeta aprendizaje"><h3>Acondicionar antes de convertir</h3><p>Elegir la resistencia de carga con la media geométrica de los extremos del sensor llevó el aprovechamiento del ADC al 98,6 %.</p></div>
+        <div class="tarjeta aprendizaje"><h3>Confiar en las API calibradas</h3><p>Las funciones de Cypress evitaron el desbordamiento aritmético que producía el escalado manual con coeficientes grandes.</p></div>
+        <div class="tarjeta aprendizaje"><h3>Medir la alimentación real</h3><p>Los 4,86 V del USB frente a 5 V teóricos explicaban el error sistemático; el escalado ratiométrico lo eliminó.</p></div>
+      </div>
+      <p class="texto-largo" style="margin-top:1rem"><strong>Aplicaciones:</strong> medición de iluminación en instrumentación básica, control de luminarias y, en general, cualquier lectura de sensores resistivos (LDR, termistores) con la PSoC 5LP.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     PROYECTO 2
+     ===================================================================== -->
+<section class="panel" id="proyecto-2" role="tabpanel" aria-labelledby="tab-p2" hidden>
+  <div class="ficha-cabecera">
+    <div class="contenedor">
+      <div class="numero">PROYECTO 2 · CONCEPCIÓN DE UNA SOLUCIÓN ELECTRÓNICA</div>
+      <h1>Del descubrimiento de problemas a la placa expansora de puente H</h1>
+      <p class="resumen">Concebir, no construir: justificar con evidencia por qué vale la pena desarrollar un producto mínimo viable (PMV) sobre la PSoC 5LP. El equipo recorrió cuatro gates de revisión, descartó dos líneas de trabajo, refutó la idea de un registro NFC y pivotó a una placa expansora que da a la PSoC capacidad de potencia para controlar un motor DC.</p>
+      <div class="hero__chips" style="justify-content:flex-start">
+        <span class="chip">Customer Discovery</span><span class="chip">Lean Startup</span><span class="chip">Stage-Gate</span><span class="chip">IR2104 + IRFZ44N</span><span class="chip">Matriz de requerimientos</span>
+      </div>
+    </div>
+  </div>
+  <div class="contenedor">
+    <div class="bloque revelar">
+      <h2>Objetivo y planteamiento</h2>
+      <div class="texto-largo">
+        <p>El docente propuso dos caminos hacia un PMV: <strong>(1) descubrimiento de problemas</strong>, conversando con personas hasta encontrar una problemática real resoluble con la PSoC, y <strong>(2) placa expansora</strong> que amplíe las capacidades de la tarjeta. El avance se controló con cuatro gates —G1 comprender el problema, G2 contrastar el supuesto crítico, G3 definir y elegir un concepto, G4 defender la concepción— y una bitácora con los campos <em>qué creemos, qué sabemos, qué hicimos y encontramos, qué decidimos y qué sigue</em>.</p>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Fundamento metodológico</h2>
+      <div class="rejilla rejilla-3">
+        <div class="tarjeta"><h3 style="margin-top:0">Customer Discovery</h3><p style="margin:0">Proceso iterativo para validar o refutar supuestos antes de construir: privilegia comportamientos sobre opiniones y preguntas abiertas sobre las de sí o no.</p></div>
+        <div class="tarjeta"><h3 style="margin-top:0">Lean Startup</h3><p style="margin:0">Hipótesis y ciclo crear–medir–aprender. Un <strong>pivote</strong> es el cambio de rumbo cuando la evidencia refuta el supuesto.</p></div>
+        <div class="tarjeta"><h3 style="margin-top:0">Gates (Stage-Gate)</h3><p style="margin:0">Puntos de revisión y decisión, no semanas: en cada uno el docente decide avanzar, revisar o replantear.</p></div>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Ruta por gates</h2>
+      <div class="pasos">
+        <div class="tarjeta paso fallo"><h3>G1 · Física y biología <span class="estado estado--fallo">Descartadas</span></h3><p>La situación energética del edificio (E01) era un problema de infraestructura fuera de escala. La clasificación automática de cromosomas (E02) era procesamiento de imágenes, sin señales analógicas que justificaran la PSoC. Aprendizaje: una idea puede ser buena y no ser la adecuada.</p></div>
+        <div class="tarjeta paso"><h3>G1 · Laboratorio de prototipado (E03–E05)</h3><p>Conversación con el encargado, revisión de unos 50 registros del cuaderno (letra ilegible, datos incompletos) y unas 2 h de observación en las que varias personas entraron y salieron sin anotar. Surge la idea del registro con NFC.</p></div>
+        <div class="tarjeta paso fallo"><h3>G2 · Contraste del supuesto crítico <span class="estado estado--fallo">Hipótesis refutada</span></h3><p>La revisión con el docente (E06) mostró que la causa era la disciplina de uso: un lector NFC no obliga a registrarse. Siete casos abiertos (sin tarjeta, tarjetas prestadas, hora de salida, ingreso en grupo, datos personales…) sumaban complejidad sin atacar la causa. El equipo pivotó al camino 2.</p></div>
+        <div class="tarjeta paso exito"><h3>G3–G4 · Placa expansora de puente H <span class="estado estado--ok">Concepto elegido</span></h3><p>Los pines de la PSoC se especifican con 4 mA en nivel alto: no puede manejar cargas de potencia. Entre las candidatas de expansión, el puente H para motor DC fue la que amplía una capacidad eléctrica real de la tarjeta.</p></div>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Diseño conceptual y cálculos preliminares</h2>
+      <div class="tabla-envoltura">
+        <table>
+          <thead><tr><th>Concepto</th><th>Arquitectura</th><th>Resultado</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">C1</td><td>Puente discreto: 2× IR2104 + 4× IRFZ44N, PWM signo-magnitud</td><td class="ok">Elegido (4,25 / 5)</td></tr>
+            <tr><td class="mono">C2</td><td>Driver integrado DRV8871</td><td>Respaldo (3,60 / 5)</td></tr>
+            <tr><td class="mono">C3</td><td>Relé DPDT + MOSFET de lado bajo</td><td class="malo">Incumple un requerimiento obligatorio</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ul class="puntos" style="margin-top:1rem">
+        <li>Diez requerimientos medibles y un filtro de requerimientos obligatorios para comparar los conceptos.</li>
+        <li>Cálculos preliminares de C1: PWM de 20 kHz con más de 10 bits, unos 0,25 W de pérdidas y ≈ 40 °C a 1,5 A, resolución de corriente de 1,25 mA y un costo cercano a 77 000 COP por canal.</li>
+        <li>Plan de ocho pruebas que separa lo verificado por cálculo, lo estimado y lo pendiente (la revisión con usuarios, E10, quedó declarada como pendiente).</li>
+      </ul>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Evidencias gráficas</h2>
+      <div class="galeria">
+        <figure class="figura figura--ancha" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-02/img/ruta-gates.jpg" alt="Ruta del proyecto por gates" loading="lazy"></div><figcaption>Ruta del proyecto por gates con las evidencias que sustentan cada decisión.</figcaption></figure>
+        <figure class="figura figura--ancha" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-02/img/conceptos-puente-h.png" alt="Conceptos de puente H comparados" loading="lazy"></div><figcaption>Los tres conceptos de puente H comparados en el Gate 3.</figcaption></figure>
+        <figure class="figura figura--ancha" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-02/img/arquitectura-c1.png" alt="Arquitectura del concepto C1" loading="lazy"></div><figcaption>Arquitectura del concepto elegido C1 con sensado de corriente.</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Documentación y descargas</h2>
+      <div class="descargas">
+        <article class="tarjeta descarga descarga--principal">
+          <span class="descarga__tipo">Informe IEEE · PDF</span>
+          <h3>Concepción de una placa expansora de puente H para la PSoC 5LP</h3>
+          <p>Artículo con el recorrido completo por gates, la matriz de requerimientos y la arquitectura. <span class="peso">745 KB</span></p>
+          <div class="descarga__botones">
+            <a class="btn btn--vino" href="assets/proyectos/proyecto-02/informe-concepcion.pdf" download><svg aria-hidden="true"><use href="#i-descargar"/></svg>Descargar Informe (PDF)</a>
+            <a class="btn btn--contorno" href="assets/proyectos/proyecto-02/informe-concepcion.pdf" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ojo"/></svg>Ver PDF</a>
+          </div>
+        </article>
+        <article class="tarjeta descarga">
+          <span class="descarga__tipo">Bitácora · PDF</span>
+          <h3>Bitácora del Proyecto 2</h3>
+          <p>Registro de evidencias E01–E10, decisiones y aprendizajes por gate. <span class="peso">286 KB</span></p>
+          <div class="descarga__botones">
+            <a class="btn btn--contorno" href="assets/proyectos/proyecto-02/bitacora-proyecto-2.pdf" download><svg aria-hidden="true"><use href="#i-descargar"/></svg>Descargar</a>
+            <a class="btn btn--contorno" href="assets/proyectos/proyecto-02/bitacora-proyecto-2.pdf" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ojo"/></svg>Ver PDF</a>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Conclusiones y aprendizajes</h2>
+      <div class="aprendizajes">
+        <div class="tarjeta aprendizaje"><h3>Comportamientos sobre opiniones</h3><p>Ver a la gente entrar sin anotar pesó más que cualquier entrevista.</p></div>
+        <div class="tarjeta aprendizaje"><h3>Electrónica pertinente</h3><p>El criterio no es solo «resuelve un problema», sino «lo resuelve con la electrónica del curso».</p></div>
+        <div class="tarjeta aprendizaje"><h3>Pivotar es parte del proceso</h3><p>Refutar una hipótesis con evidencia también es un resultado de ingeniería.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     PROYECTO 3
+     ===================================================================== -->
+<section class="panel" id="proyecto-3" role="tabpanel" aria-labelledby="tab-p3" hidden>
+  <div class="ficha-cabecera">
+    <div class="contenedor">
+      <div class="numero">PROYECTO 3 · PÓSTER DIVULGATIVO DEL PROCESO DE CONCEPCIÓN</div>
+      <h1>«Del cuaderno al terminal NFC»: comunicar la ingeniería en un póster</h1>
+      <p class="resumen">Un único póster vertical de 80 × 160 cm que comunica la fase NFC del proceso de concepción del Proyecto 2 en lugar de reproducir el expediente técnico. La secuencia narrativa es Contexto → Evidencias → Hallazgos → Necesidad → Propuesta → Contraste → Aprendizaje, y se llegó a ella tras cinco iteraciones visuales.</p>
+      <div class="hero__chips" style="justify-content:flex-start">
+        <span class="chip">Póster 80 × 160 cm</span><span class="chip">Comunicación técnica</span><span class="chip">NFC 13,56 MHz</span><span class="chip">Ley 1581 de 2012</span><span class="chip">Iteración visual</span>
+      </div>
+      <div class="descarga__botones" style="margin-top:1.2rem">
+        <a class="btn btn--dorado" href="#" data-abrir-figura="poster-p3"><svg aria-hidden="true"><use href="#i-ojo"/></svg>Ver póster final</a>
+      </div>
+    </div>
+  </div>
+  <div class="contenedor">
+    <div class="bloque revelar">
+      <h2>Objetivo y planteamiento</h2>
+      <ul class="puntos texto-largo">
+        <li><strong>Sintetizar:</strong> traducir un expediente de 29 páginas a un póster que un lector externo entienda sin exposición oral.</li>
+        <li><strong>Rigor y trazabilidad:</strong> mostrar cómo las evidencias de campo originaron los hallazgos, separando datos preliminares, estimaciones y pruebas pendientes.</li>
+        <li><strong>Iterar hasta escala real:</strong> evaluar propuestas visuales hasta una pieza vertical de 6 bloques, fondo claro, referencias IEEE y código QR.</li>
+      </ul>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Contenido técnico que comunica el póster</h2>
+      <div class="rejilla rejilla-2">
+        <div class="tarjeta">
+          <h3 style="margin-top:0">Evidencias y requerimientos</h3>
+          <p>La auditoría del cuaderno arrojó de forma preliminar un 30 % de registros mal diligenciados y hasta un 50 % de personas sin registrar. De allí salieron requerimientos como registrar con un gesto rápido (acercar el carné, ≤ 2 s), alimentación dual con prioridad a red y autonomía ≥ 30 días, y la minimización de datos personales: guardar solo el identificador UID y la marca de tiempo (Ley 1581 de 2012).</p>
+        </div>
+        <div class="tarjeta">
+          <h3 style="margin-top:0">Contraste de conceptos</h3>
+          <div class="tabla-envoltura">
+            <table>
+              <thead><tr><th>Concepto</th><th>Salida de datos</th><th>Puntaje</th></tr></thead>
+              <tbody>
+                <tr><td class="mono">C1</td><td>Terminal autónomo, CSV en microSD</td><td class="mono ok">4,30</td></tr>
+                <tr><td class="mono">C3</td><td>Híbrido con sincronización BLE</td><td class="mono">4,05</td></tr>
+                <tr><td class="mono">C2</td><td>Conectado en tiempo real por Wi-Fi</td><td class="mono">2,90</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <details class="acordeon" style="margin-top:1rem">
+        <summary>Arquitectura analógica y estimación de autonomía del concepto C1</summary>
+        <div class="acordeon__cuerpo">
+          <ul class="puntos">
+            <li>MOSFET de canal P para dar prioridad al cargador de 5 V sobre un paquete de 3 pilas AA.</li>
+            <li>Regulador LDO MCP1700-3302 (I<sub>q</sub> = 1,6 µA típico) para el riel de 3,3 V.</li>
+            <li>Divisor de 600 kΩ / 400 kΩ hacia el ADC SAR de 12 bits para el aviso de batería baja a 3,8 V.</li>
+            <li>Lector MFRC522 o PN532 y microSD coordinados por SPI desde la PSoC.</li>
+          </ul>
+          <div class="formula">Autonomía estimada ≈ 37,5 a 54,9 días <span class="nota">consumo medio de 26,0 a 38,0 mAh/día · pendiente de medición en banco (T03)</span></div>
+        </div>
+      </details>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Iteración gráfica y póster final</h2>
+      <p class="texto-largo">Entre el 20 y el 21 de octubre de 2026 se produjeron cinco iteraciones: un primer boceto descartado por errores tipográficos, una maquetación editorial base en 6 bloques, variantes divulgativas en tarjetas que reducían el relato a 4 bloques y, finalmente, el arte aprobado a escala real con barra narrativa de 7 pasos, tabla de hallazgos, matriz C1/C2/C3, pendientes declarados y 7 referencias IEEE.</p>
+      <div class="galeria">
+        <figure class="figura figura--alta" id="poster-p3" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-03/img/poster-final.jpg" alt="Póster final «Del cuaderno al terminal NFC»" loading="lazy"></div><figcaption>Iteración 5 aprobada · Póster final 80 × 160 cm.</figcaption></figure>
+        <figure class="figura figura--alta" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-03/img/iteracion-2.jpg" alt="Iteración 2 del póster" loading="lazy"></div><figcaption>Iteración 2: primera maquetación editorial en 6 bloques.</figcaption></figure>
+        <figure class="figura figura--alta" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-03/img/iteracion-4.jpg" alt="Iteración 4 del póster" loading="lazy"></div><figcaption>Iteración 4: variante en tarjetas de alto contraste (descartada).</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Documentación y descargas</h2>
+      <div class="descargas">
+        <article class="tarjeta descarga descarga--principal">
+          <span class="descarga__tipo">Informe IEEE · PDF</span>
+          <h3>Comunicación divulgativa del proceso de concepción</h3>
+          <p>Síntesis, iteraciones visuales y verificación del póster final. <span class="peso">13.5 MB</span></p>
+          <div class="descarga__botones">
+            <a class="btn btn--vino" href="assets/proyectos/proyecto-03/informe-poster.pdf" download><svg aria-hidden="true"><use href="#i-descargar"/></svg>Descargar Informe (PDF)</a>
+            <a class="btn btn--contorno" href="assets/proyectos/proyecto-03/informe-poster.pdf" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ojo"/></svg>Ver PDF</a>
+          </div>
+        </article>
+        <article class="tarjeta descarga">
+          <span class="descarga__tipo">Póster · JPG</span>
+          <h3>Póster final «Del cuaderno al terminal NFC»</h3>
+          <p>Imagen del arte final, extraída de la bitácora del proyecto. <span class="peso">530 KB</span></p>
+          <div class="descarga__botones">
+            <a class="btn btn--dorado" href="assets/proyectos/proyecto-03/img/poster-final.jpg" download><svg aria-hidden="true"><use href="#i-descargar"/></svg>Descargar Póster</a>
+            <a class="btn btn--contorno" href="#" data-abrir-figura="poster-p3"><svg aria-hidden="true"><use href="#i-ojo"/></svg>Ver</a>
+          </div>
+        </article>
+        <article class="tarjeta descarga">
+          <span class="descarga__tipo">Bitácora · PDF</span>
+          <h3>Bitácora del Proyecto 3</h3>
+          <p>Evidencias del diseño del póster (P3-E01 a P3-E07) y decisiones por iteración. <span class="peso">13.9 MB</span></p>
+          <div class="descarga__botones">
+            <a class="btn btn--contorno" href="assets/proyectos/proyecto-03/bitacora-poster.pdf" download><svg aria-hidden="true"><use href="#i-descargar"/></svg>Descargar</a>
+            <a class="btn btn--contorno" href="assets/proyectos/proyecto-03/bitacora-poster.pdf" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ojo"/></svg>Ver PDF</a>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Conclusiones y aprendizajes</h2>
+      <div class="aprendizajes">
+        <div class="tarjeta aprendizaje"><h3>Seleccionar es diseñar</h3><p>Un póster no resume todo: elige las evidencias que sostienen la decisión.</p></div>
+        <div class="tarjeta aprendizaje"><h3>Honestidad técnica</h3><p>Diferenciar dato, estimación y prueba pendiente hace creíble la propuesta.</p></div>
+        <div class="tarjeta aprendizaje"><h3>Iterar con criterios</h3><p>Cada versión se evaluó contra la rúbrica (escala, bloques, trazabilidad, referencias).</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     PROYECTO 4
+     ===================================================================== -->
+<section class="panel" id="proyecto-4" role="tabpanel" aria-labelledby="tab-p4" hidden>
+  <div class="ficha-cabecera">
+    <div class="contenedor">
+      <div class="numero">PROYECTO 4 · DEL CONCEPTO AL PMV · ALTERNATIVA B</div>
+      <h1>Del Puente H al PMV: tarjeta de expansión de sensores DHT11 + YL-38</h1>
+      <p class="resumen">Producto mínimo viable para la CY8CKIT-059: una tarjeta que sirve de interfaz para un sensor digital (DHT11, temperatura y humedad relativa) y uno analógico (YL-38 con sonda YL-69, humedad del suelo, digitalizado con un ADC Delta-Sigma de 16 bits). El firmware recorre cuatro modos con un pulsador y envía telemetría por UART a 57 600 bit/s.</p>
+      <div class="hero__chips" style="justify-content:flex-start">
+        <span class="chip">PMV funcional</span><span class="chip">DHT11 · bus de un hilo</span><span class="chip">YL-38 · ADC 16 bits</span><span class="chip">Máquina de estados</span><span class="chip">PCB en KiCad</span>
+      </div>
+    </div>
+  </div>
+  <div class="contenedor">
+    <div class="bloque revelar">
+      <h2>El salto del Puente H al PMV</h2>
+      <p class="texto-largo">El camino hasta el PMV no fue lineal. La placa de puente H concebida en el Proyecto 2 se intentó implementar dos veces sin éxito, y el equipo pivotó a una tarjeta de sensores que sí se completó y probó.</p>
+      <div class="rejilla rejilla-narrativa">
+        <div class="pasos">
+          <div class="tarjeta paso"><h3>Concepción en el Proyecto 2</h3><p>El puente H obtuvo el mayor puntaje entre las candidatas. El concepto discreto C1 superó al DRV8871 por menores pérdidas y porque permite medir corriente con la PSoC; sus cálculos solo se verificaron analíticamente.</p></div>
+          <div class="tarjeta paso fallo"><h3>Primer intento: puente discreto C1 <span class="estado estado--fallo">No funcionó</span></h3><p>2× IR2104 + 4× IRFZ44N. El montaje no logró un funcionamiento correcto y la causa no quedó documentada.</p></div>
+          <div class="tarjeta paso fallo"><h3>Segundo intento: puente H con relés <span class="estado estado--fallo">Relés sin conmutar</span></h3><p>Dos relés SPDT SRD-05VDC-SL-C excitados por transistores PN2222A (base de 1,5 kΩ, diodo 1N4007) con fuente externa de 5 V para las bobinas y batería de 12 V aislada. La PSoC ejecutaba el programa, pero ningún relé conmutó y el motor no se movió.</p></div>
+          <div class="tarjeta paso exito"><h3>Decisión de pivotar <span class="estado estado--ok">PMV de sensores</span></h3><p>Con dos intentos fallidos y sin causa identificada, se aplicó la lección del Proyecto 2: cambiar de rumbo con evidencia. El nuevo PMV encaja en la alternativa B (interfaz para sensores), no conecta cargas de potencia a la PSoC y combina una señal digital con una analógica, el núcleo del curso.</p></div>
+        </div>
+        <div>
+          <div class="galeria" style="grid-template-columns:1fr">
+            <figure class="figura" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-04/img/evolucion-proyecto.jpg" alt="Evolución del proyecto" loading="lazy"></div><figcaption>Evolución: los recuadros discontinuos son intentos que no funcionaron.</figcaption></figure>
+            <figure class="figura figura--alta" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-04/img/antecedente-puente-h-protoboard.jpg" alt="Montaje del puente H con relés en protoboard" loading="lazy"></div><figcaption>Antecedente: puente H con relés en protoboard (la PSoC operaba, los relés no conmutaban).</figcaption></figure>
+          </div>
+        </div>
+      </div>
+      <details class="acordeon" style="margin-top:1.2rem">
+        <summary>¿Por qué no conmutaban los relés? Revisión del driver</summary>
+        <div class="acordeon__cuerpo">
+          <p>La bobina del SRD-05VDC-SL-C consume ≈ 71 mA (≈ 70 Ω). Con una salida de 5 V:</p>
+          <div class="formula">I<sub>B</sub> = (5 V − 0,7 V) / 1,5 kΩ ≈ 2,9 mA</div>
+          <div class="formula">β<sub>forzada</sub> = I<sub>C</sub> / I<sub>B</sub> ≈ 71 mA / 2,9 mA ≈ 25 <span class="nota">muy por debajo de h<sub>FE</sub> ≥ 100 del PN2222A</span></div>
+          <p>El transistor debía saturar con holgura, así que el cálculo no explicaba la falla: apuntaba al montaje o a la configuración. Hipótesis por verificar: orden de pines (PN2222A es E-B-C, P2N2222A es C-B-E), diodo invertido, falta de referencia común entre la fuente de 5 V y el GND de la PSoC, pines sin modo <em>Strong Drive</em> o contactos de la protoboard. Este aprendizaje es el que retoman los Proyectos 5 y 6.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Requisitos y arquitectura del PMV</h2>
+      <div class="tabla-envoltura">
+        <table>
+          <thead><tr><th>ID</th><th>Requisito</th><th>Verificación</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">RQ1</td><td>Leer T y HR del DHT11 y transmitirlas por UART cada ≤ 2 s, dentro del rango del sensor y sin errores de trama</td><td>Terminal PuTTY</td></tr>
+            <tr><td class="mono">RQ2</td><td>Digitalizar la salida A0 del YL-38 (0–5 V, 16 bits), con resolución de 1 mV y un índice de 0–100 % que aumente al humedecer la sonda</td><td>PuTTY, sonda seca y húmeda</td></tr>
+            <tr><td class="mono">RQ3</td><td>Recorrer 4 modos con el pulsador (antirrebote de 20 ms), con un patrón de LED por modo y sin retardos bloqueantes</td><td>Observación y PuTTY</td></tr>
+            <tr><td class="mono">RQ4</td><td>Alimentar los sensores a 5 V y llevar a la PSoC solo señales ≤ 5 V, sin cargas de potencia</td><td>Inspección y medición</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="rejilla rejilla-2" style="margin-top:1.2rem">
+        <div class="tarjeta">
+          <h3 style="margin-top:0">Principio de funcionamiento</h3>
+          <p>El <strong>DHT11</strong> integra un sensor capacitivo de humedad, un termistor y un microcontrolador que entrega una trama de 40 bits con suma de verificación tras un pulso de inicio de ≥ 18 ms. El <strong>YL-38</strong> forma un divisor resistivo con la sonda YL-69: su tensión A0 baja cuando aumenta la conductividad del suelo.</p>
+        </div>
+        <div class="tarjeta">
+          <h3 style="margin-top:0">Asignación de pines</h3>
+          <div class="tabla-envoltura">
+            <table>
+              <thead><tr><th>Señal</th><th>Pin</th><th>Función</th></tr></thead>
+              <tbody>
+                <tr><td class="mono">YL38_AO</td><td class="mono">P0[0]</td><td>Entrada del ADC</td></tr>
+                <tr><td class="mono">DHT11_Data</td><td class="mono">P3[0]</td><td>Bus de datos</td></tr>
+                <tr><td class="mono">LED_Interno</td><td class="mono">P2[1]</td><td>LED de estado</td></tr>
+                <tr><td class="mono">SW_Interno</td><td class="mono">P2[2]</td><td>Pulsador</td></tr>
+                <tr><td class="mono">Rx_1 / Tx_1</td><td class="mono">P12[6] / P12[7]</td><td>UART al KitProg</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Diseño del circuito y firmware</h2>
+      <div class="texto-largo">
+        <p>La tarjeta es una placa de interconexión pasiva: J1 recibe +5 V y GND, J2 aloja el DHT11, J3 el módulo YL-38 y J4 lleva las dos señales a la PSoC. La PCB se diseñó a una cara en KiCad con cuatro orificios de fijación; el prototipo funcional se ensambló y soldó a mano sobre placa perforada.</p>
+        <p>El firmware organiza el programa en una base de tiempo SysTick de 1 ms, una máquina de estados y tareas no bloqueantes (sin <code>CyDelay()</code>). Los plazos se comparan como diferencias sin signo, válidas aun cuando el contador se desborda. Al energizar, el LED queda encendido 3 s y cada pulsación avanza al modo siguiente:</p>
+      </div>
+      <div class="tabla-envoltura">
+        <table>
+          <thead><tr><th>Modo</th><th>DHT11</th><th>YL-38</th><th>LED</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">E0</td><td>Detenido</td><td>Detenido</td><td>Apagado</td></tr>
+            <tr><td class="mono">E1</td><td>Cada 2 s</td><td>Detenido</td><td>Encendido fijo</td></tr>
+            <tr><td class="mono">E2</td><td>Detenido</td><td>Envío cada 1 s</td><td>Conmuta cada 4 s</td></tr>
+            <tr><td class="mono">E3</td><td>Cada 2 s</td><td>Promedio continuo</td><td>Conmuta cada 40 ms (12,5 Hz)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <details class="acordeon" style="margin-top:1rem">
+        <summary>Relación entre la tensión A0 y el índice de humedad del YL-38</summary>
+        <div class="acordeon__cuerpo">
+          <p>Un ajuste por mínimos cuadrados a los seis pares observados con H &gt; 0 da H ≈ 133,8 − 28,57·V<sub>A0</sub> (R² = 0,9999), lo que sugiere V<sub>seco</sub> = 4,70 V y V<sub>húm</sub> = 1,20 V:</p>
+          <div class="formula">H = sat<sub>[0,100]</sub> ⌊ 100 · (4700 − V<sub>mV</sub>) / 3500 ⌋</div>
+          <p>La ecuación reproduce los índices observados (por ejemplo 4,580 V → 3 % y 2,696 V → 57 %). El índice es una escala relativa, no una humedad volumétrica, y el informe lo declara como inferencia por confirmar en <code>yl38.c</code>.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Fabricación, pruebas y resultados</h2>
+      <div class="tabla-envoltura" style="margin-bottom:1.2rem">
+        <table>
+          <thead><tr><th>Req.</th><th>Esperado</th><th>Medido u observado</th><th>Cumple</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">RQ1</td><td>T en 0–50 °C, HR en 20–90 %, cada ≤ 2 s</td><td class="mono">31,8–33,3 °C · 48–55 %HR</td><td class="ok">Sí</td></tr>
+            <tr><td class="mono">RQ2</td><td>Tensión de 0–5 V con 1 mV de resolución</td><td class="mono">2,696–5,022 V</td><td class="ok">Sí</td></tr>
+            <tr><td class="mono">RQ2</td><td>El índice aumenta al humedecer</td><td class="mono">0 % (seco) → hasta 57 %</td><td class="ok">Sí</td></tr>
+            <tr><td class="mono">RQ3</td><td>4 modos en orden con el pulsador</td><td class="mono">E0 → E1 → E2 → E3</td><td class="ok">Sí</td></tr>
+            <tr><td class="mono">RQ4</td><td>Señales ≤ 5 V en los pines</td><td class="mono">A0 máx. 5,022 V ≈ VDDA</td><td>Parcial (sin margen)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="galeria">
+        <figure class="figura" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-04/img/arquitectura-pmv.jpg" alt="Arquitectura del PMV" loading="lazy"></div><figcaption>Arquitectura del PMV y recursos internos de la PSoC 5LP.</figcaption></figure>
+        <figure class="figura" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-04/img/esquematico-pmv.png" alt="Esquemático de la tarjeta de expansión" loading="lazy"></div><figcaption>Esquemático de la tarjeta (J1–J4).</figcaption></figure>
+        <figure class="figura" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-04/img/pcb-kicad-pmv.jpg" alt="PCB en KiCad" loading="lazy"></div><figcaption>PCB en KiCad: trazado y vista 3D.</figcaption></figure>
+        <figure class="figura" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-04/img/topdesign-pmv.png" alt="TopDesign del PMV" loading="lazy"></div><figcaption>TopDesign en PSoC Creator: ADC_DelSig_1, UART_1 y pines.</figcaption></figure>
+        <figure class="figura" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-04/img/maquina-estados.png" alt="Máquina de estados del firmware" loading="lazy"></div><figcaption>Máquina de estados: cada «SW» es una pulsación validada.</figcaption></figure>
+        <figure class="figura figura--alta" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-04/img/fabricacion-montaje.jpg" alt="Fabricación y montaje del PMV" loading="lazy"></div><figcaption>Fabricación y montaje del PMV con la CY8CKIT-059.</figcaption></figure>
+        <figure class="figura" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-04/img/putty-pruebas.jpg" alt="Registro de pruebas en PuTTY" loading="lazy"></div><figcaption>Registro de pruebas en PuTTY: transiciones y modo dual E3.</figcaption></figure>
+        <figure class="figura" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-04/img/indice-yl38.jpg" alt="Índice del YL-38 frente a la tensión" loading="lazy"></div><figcaption>Índice del YL-38 frente a la tensión A0 y modelo inferido.</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Documentación y descargas · PMV final</h2>
+      <div class="descargas">
+        <article class="tarjeta descarga descarga--principal">
+          <span class="descarga__tipo">Expediente técnico · PDF</span>
+          <h3>Expediente del PMV (DHT11 + YL-38)</h3>
+          <p>Problema, requisitos, arquitectura, esquemático, PCB, materiales, pruebas y limitaciones. <span class="peso">1.4 MB</span></p>
+          <div class="descarga__botones">
+            <a class="btn btn--vino" href="assets/proyectos/proyecto-04/informe-pmv.pdf" download><svg aria-hidden="true"><use href="#i-descargar"/></svg>Descargar Informe (PDF)</a>
+            <a class="btn btn--contorno" href="assets/proyectos/proyecto-04/informe-pmv.pdf" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ojo"/></svg>Ver PDF</a>
+          </div>
+        </article>
+        <article class="tarjeta descarga">
+          <span class="descarga__tipo">Firmware · .zip</span>
+          <h3>Proyecto de PSoC Creator del PMV</h3>
+          <p><code>Proyecto4.cydsn</code>: TopDesign, .cydwr, <code>main.c</code>, <code>dht11.c/.h</code>, <code>yl38.c/.h</code> y guía de configuración. <span class="peso">34 KB</span></p>
+          <div class="descarga__botones"><a class="btn btn--dorado" href="assets/proyectos/proyecto-04/firmware-pmv-psoc.zip" download><svg aria-hidden="true"><use href="#i-codigo"/></svg>Descargar Firmware (.zip)</a></div>
+        </article>
+        <article class="tarjeta descarga">
+          <span class="descarga__tipo">Artículo IEEE · .docx</span>
+          <h3>Del puente H a un módulo de monitoreo ambiental con PSoC 5LP</h3>
+          <p>Artículo sobre la evolución de la placa expansora hasta el sistema DHT11 + YL-38. <span class="peso">1.5 MB</span></p>
+          <div class="descarga__botones"><a class="btn btn--contorno" href="assets/proyectos/proyecto-04/articulo-ieee-pmv.docx" download><svg aria-hidden="true"><use href="#i-descargar"/></svg>Descargar (.docx)</a></div>
+        </article>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Conclusiones, limitaciones y aprendizajes</h2>
+      <div class="aprendizajes">
+        <div class="tarjeta aprendizaje"><h3>Declarar qué funcionó y qué no</h3><p>Cambiar de rumbo con evidencia es válido si se documenta qué falta medir.</p></div>
+        <div class="tarjeta aprendizaje"><h3>Medir antes de descartar</h3><p>Con V<sub>BE</sub>, V<sub>CE</sub> y la tensión en la bobina se habría podido diagnosticar el puente H.</p></div>
+        <div class="tarjeta aprendizaje"><h3>Versión siguiente</h3><p>Fresar la PCB por CNC, añadir GND y +5 V a J4 y proteger las entradas hacia la PSoC.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     PROYECTO 5
+     ===================================================================== -->
+<section class="panel" id="proyecto-5" role="tabpanel" aria-labelledby="tab-p5" hidden>
+  <div class="ficha-cabecera">
+    <div class="contenedor">
+      <div class="numero">PROYECTO 5 · DEL PMV A LA FABRICACIÓN INDUSTRIAL</div>
+      <h1>Retorno al puente H con relés: diseño basado en hojas de datos</h1>
+      <p class="resumen">Se retomó la idea del puente H porque se corrigió la etapa de potencia que impedía activar los relés. Cada componente se recalculó con las hojas de datos y un análisis de peor caso, se simularon los cuatro estados del puente y se diseñó una PCB de dos capas de unos 60 × 35 mm, con revisiones R2 a R4 orientadas a fabricación en JLCPCB por debajo de USD 20.</p>
+      <div class="hero__chips" style="justify-content:flex-start">
+        <span class="chip">SRD-05VDC-SL-C</span><span class="chip">MMBT2222A</span><span class="chip">Peor caso</span><span class="chip">Proteus · PCB 2 capas</span><span class="chip">DFM JLCPCB</span>
+      </div>
+    </div>
+  </div>
+  <div class="contenedor">
+    <div class="bloque revelar">
+      <h2>Objetivo y decisión de retomar el puente H</h2>
+      <div class="texto-largo">
+        <p>El Proyecto 5 pedía llevar el PMV a una versión preparada para fabricación y ensamblaje industrial. El PMV de sensores funcionó, pero se dejó de lado por recomendación del docente: era una placa de conexiones entre módulos comerciales, sin componentes calculados ni contenido SMD que optimizar.</p>
+      </div>
+      <div class="tabla-envoltura">
+        <table>
+          <thead><tr><th>Alternativa</th><th>Diseño 30 %</th><th>Riesgo 20 %</th><th>SMD/THT 20 %</th><th>Costo 15 %</th><th>Educativo 15 %</th><th>Total</th></tr></thead>
+          <tbody>
+            <tr><td>A1. Evolucionar la tarjeta de sensores</td><td class="mono">1</td><td class="mono">5</td><td class="mono">4</td><td class="mono">5</td><td class="mono">2</td><td class="mono">3,15</td></tr>
+            <tr><td><strong>A2. Puente H con relés, recalculado</strong></td><td class="mono">4</td><td class="mono">4</td><td class="mono">2</td><td class="mono">4</td><td class="mono">5</td><td class="mono ok">3,75</td></tr>
+            <tr><td>A3. Puente H integrado SMD (DRV8871)</td><td class="mono">3</td><td class="mono">3</td><td class="mono">5</td><td class="mono">4</td><td class="mono">3</td><td class="mono">3,55</td></tr>
+            <tr><td>A4. Puente discreto (IR2104 + IRFZ44N)</td><td class="mono">5</td><td class="mono">1</td><td class="mono">2</td><td class="mono">2</td><td class="mono">3</td><td class="mono">2,85</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="texto-largo" style="margin-top:1rem">Ganó A2 por su valor educativo: los relés separan físicamente el circuito del motor del de control y <strong>ninguna combinación de entradas puede poner en corto la fuente</strong>. A3 quedó como plan de respaldo.</p>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Fundamento: ¿por qué falla un driver mal calculado?</h2>
+      <div class="texto-largo">
+        <p>Un pin de microcontrolador entrega pocos miliamperios y un motor de 12 V necesita amperios. Entre ambos hace falta una etapa de potencia que, en un curso, también protege: si alguien se equivoca, debe dañarse un componente barato y no la tarjeta. El primer recálculo partió de dos supuestos que no venían de ninguna hoja de datos (20 mA por pin y 90–100 mA por bobina) y falló al contrastarlo:</p>
+        <ul class="puntos">
+          <li>La PSoC <strong>no garantiza 20 mA</strong> por pin: su salida en alto está especificada con 4 mA; los 28 a 49 mA son límites absolutos de daño.</li>
+          <li>La bobina quedaba al <strong>131 %</strong> de su tensión nominal (6,56 V), cuando el máximo es 120 % (6,0 V).</li>
+          <li>Los 90–100 mA correspondían a otro relé: la «L» de SL-C indica 0,36 W (70 Ω, 71,4 mA).</li>
+          <li>No se había verificado la saturación ni la potencia de las resistencias.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Diseño: etapa de potencia corregida</h2>
+      <div class="formula">R<sub>base</sub> = (4,7 − 0,6) V / 4 mA = 1025 Ω ⇒ 1 kΩ <span class="nota">I<sub>pin</sub> ≤ 4,1 mA</span></div>
+      <div class="formula">I<sub>B,req</sub> = I<sub>C,máx</sub> / h<sub>FE,mín</sub> = 79,1 mA / 50 = 1,58 mA <span class="nota">I<sub>B</sub> ≥ 2,98 mA · margen 1,9</span></div>
+      <div class="formula">R<sub>serie</sub> = (12 − 0,3 − 5) V / 71,4 mA = 93,8 Ω ⇒ 100 Ω <span class="nota">I<sub>bob</sub> = 68,8 mA</span></div>
+      <p class="texto-largo">Además se añadieron 10 kΩ entre base y emisor para mantener los relés apagados mientras la PSoC arranca.</p>
+      <div class="rejilla rejilla-2">
+        <div class="tabla-envoltura">
+          <table>
+            <thead><tr><th>Parámetro</th><th>Versión 1</th><th>Versión 2</th></tr></thead>
+            <tbody>
+              <tr><td>Corriente del pin</td><td class="mono malo">20 mA (supuesto)</td><td class="mono ok">≤ 4,1 mA</td></tr>
+              <tr><td>Resistencia de base</td><td class="mono">220 Ω</td><td class="mono">1 kΩ</td></tr>
+              <tr><td>R en serie con la bobina</td><td class="mono">56 Ω</td><td class="mono">100 Ω, 1 W</td></tr>
+              <tr><td>Corriente de bobina</td><td class="mono">93,7 mA</td><td class="mono">68,8 mA</td></tr>
+              <tr><td>Tensión de bobina</td><td class="mono malo">6,56 V (131 %)</td><td class="mono ok">4,82 V (96 %)</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tabla-envoltura">
+          <table>
+            <thead><tr><th>Peor caso (R<sub>serie</sub> = 100 Ω)</th><th>I<sub>bob</sub></th><th>V<sub>bob</sub></th></tr></thead>
+            <tbody>
+              <tr><td>Nominal</td><td class="mono">68,8 mA</td><td class="mono">4,82 V</td></tr>
+              <tr><td>Mínima tensión</td><td class="mono">61,9 mA</td><td class="mono ok">3,90 V ≥ 3,75 V</td></tr>
+              <tr><td>Máxima tensión</td><td class="mono">72,7 mA</td><td class="mono ok">5,60 V ≤ 6,0 V</td></tr>
+              <tr><td>Máxima corriente</td><td class="mono">79,1 mA</td><td class="mono ok">4,98 V ≤ 6,0 V</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <details class="acordeon" style="margin-top:1rem">
+        <summary>Validación por simulación: los cuatro estados del puente</summary>
+        <div class="acordeon__cuerpo">
+          <p>Como Proteus no incluye la PSoC, cada pin se reemplazó por una fuente de 4,7 V con un interruptor. Tras corregir dos errores de captura (bases unidas a la misma fuente y un modelo de relé de 12 V / 275 Ω), la simulación reprodujo los cuatro estados:</p>
+          <div class="tabla-envoltura">
+            <table>
+              <thead><tr><th>P12[2]</th><th>P12[3]</th><th>Bornes del motor</th><th>Resultado</th></tr></thead>
+              <tbody>
+                <tr><td class="mono">0</td><td class="mono">0</td><td>GND / GND</td><td>Parado (frenado)</td></tr>
+                <tr><td class="mono">4,7 V</td><td class="mono">0</td><td>+12 V / GND</td><td>Giro en sentido A</td></tr>
+                <tr><td class="mono">0</td><td class="mono">4,7 V</td><td>GND / +12 V</td><td>Giro en sentido B</td></tr>
+                <tr><td class="mono">4,7 V</td><td class="mono">4,7 V</td><td>+12 V / +12 V</td><td>Parado (frenado)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>PCB R1 y revisiones hacia fabricación</h2>
+      <div class="texto-largo">
+        <p>La primera versión diseñada (R1) usa resistencias 1206, transistores en SOT-23 y diodos SMA; los relés, borneras y pines de control son THT. Al contrastar la PCB con los cálculos aparecieron problemas que la simulación no mostraba, y son el punto de partida de las revisiones:</p>
+      </div>
+      <div class="pasos">
+        <div class="tarjeta paso"><h3>R1 · Primera versión funcional <span class="estado estado--ok">Completa</span></h3><p>Esquemático, PCB de dos capas, vista 3D y simulación. Hallazgos: R5 y R6 disipan hasta 0,59 W en huella 1206 de 0,25 W; faltaba GND hacia la PSoC; pistas de potencia del mismo ancho que las de señal; MMBT2222 en lugar de MMBT2222A.</p></div>
+        <div class="tarjeta paso"><h3>R2 · Corrección eléctrica <span class="estado estado--plan">Propuesta</span></h3><p>R5/R6 en 2512 de 1 W, conector J1 de 3 pines con GND, pistas de potencia ≥ 1,5 mm (IPC-2221: ≈ 1,37 mm para 3 A) y MMBT2222A (40 V, V<sub>CE(sat)</sub> ≤ 0,3 V).</p></div>
+        <div class="tarjeta paso"><h3>R3 · Diseño para fabricación en JLCPCB <span class="estado estado--plan">Propuesta</span></h3><p>Reglas del fabricante con margen, partes básicas de su librería (diodo M7 en lugar de ES1B) y generación de Gerber, perforaciones, BOM y CPL.</p></div>
+        <div class="tarjeta paso"><h3>R4 · Evaluación económica <span class="estado estado--plan">Estimado</span></h3><p>Costo estimado de USD 17,93 frente al límite de USD 20 por pedido.</p></div>
+      </div>
+      <div class="galeria" style="margin-top:1.2rem">
+        <figure class="figura figura--ancha" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-05/img/recorrido-proyecto.jpg" alt="Recorrido del proyecto" loading="lazy"></div><figcaption>Recorrido desde el Proyecto 2: intentos, pivote y revisiones R1–R4.</figcaption></figure>
+        <figure class="figura figura--ancha" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-05/img/proceso-diseno.jpg" alt="Proceso de diseño seguido" loading="lazy"></div><figcaption>Proceso de diseño: un valor que incumple una hoja de datos devuelve el diseño a la etapa 2.</figcaption></figure>
+        <figure class="figura" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-05/img/esquematico-r1.jpg" alt="Esquemático R1" loading="lazy"></div><figcaption>R1: esquemático en Proteus.</figcaption></figure>
+        <figure class="figura" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-05/img/pcb-r1.jpg" alt="PCB R1 en Proteus" loading="lazy"></div><figcaption>R1: PCB de dos capas (cobre superior en rojo, inferior en azul).</figcaption></figure>
+        <figure class="figura" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-05/img/pcb-r1-3d.jpg" alt="Vista 3D de la PCB R1" loading="lazy"></div><figcaption>R1: vista 3D de la PCB.</figcaption></figure>
+        <figure class="figura" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-05/img/esquematico-r2-r4.jpg" alt="Esquemático propuesto R2 a R4" loading="lazy"></div><figcaption>Esquemático propuesto para R2 a R4.</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Documentación y descargas</h2>
+      <div class="descargas">
+        <article class="tarjeta descarga descarga--principal">
+          <span class="descarga__tipo">Artículo IEEE · PDF</span>
+          <h3>Rediseño basado en hojas de datos de una placa de puente H con relés</h3>
+          <p>Versión fallida frente a versión revisada, simulación y PCB. <span class="peso">1.5 MB</span></p>
+          <div class="descarga__botones">
+            <a class="btn btn--vino" href="assets/proyectos/proyecto-05/articulo-puente-h-r1.pdf" download><svg aria-hidden="true"><use href="#i-descargar"/></svg>Descargar Informe (PDF)</a>
+            <a class="btn btn--contorno" href="assets/proyectos/proyecto-05/articulo-puente-h-r1.pdf" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ojo"/></svg>Ver PDF</a>
+          </div>
+        </article>
+        <article class="tarjeta descarga">
+          <span class="descarga__tipo">Simulación + PCB · .pdsprj</span>
+          <h3>Puente H con relés en Proteus</h3>
+          <p>Proyecto de Proteus con el esquemático y la PCB de dos capas. <span class="peso">25 KB</span></p>
+          <div class="descarga__botones"><a class="btn btn--dorado" href="assets/proyectos/proyecto-05/pcb-puente-h-proteus.pdsprj" download><svg aria-hidden="true"><use href="#i-descargar"/></svg>Descargar Simulación (.pdsprj)</a></div>
+        </article>
+        <article class="tarjeta descarga">
+          <span class="descarga__tipo">Bitácora · PDF</span>
+          <h3>Bitácora del Proyecto 5</h3>
+          <p>Matriz de decisión, requisitos, cálculo de peor caso, revisiones y BOM para JLCPCB. <span class="peso">1.9 MB</span></p>
+          <div class="descarga__botones">
+            <a class="btn btn--contorno" href="assets/proyectos/proyecto-05/bitacora-proyecto-5.pdf" download><svg aria-hidden="true"><use href="#i-descargar"/></svg>Descargar</a>
+            <a class="btn btn--contorno" href="assets/proyectos/proyecto-05/bitacora-proyecto-5.pdf" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ojo"/></svg>Ver PDF</a>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Conclusiones y aprendizajes</h2>
+      <div class="aprendizajes">
+        <div class="tarjeta aprendizaje"><h3>El proceso hace la diferencia</h3><p>Requisitos medibles, hoja de datos, cálculo, peor caso, simulación y revisión de la PCB contra los cálculos.</p></div>
+        <div class="tarjeta aprendizaje"><h3>Supuestos ≠ datos</h3><p>«20 mA por pin» parecía razonable y era cinco veces la corriente garantizada.</p></div>
+        <div class="tarjeta aprendizaje"><h3>La PCB también se calcula</h3><p>Potencia de las resistencias, ancho de pista y retorno de tierra no aparecen en la simulación.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =====================================================================
+     PROYECTO 6
+     ===================================================================== -->
+<section class="panel" id="proyecto-6" role="tabpanel" aria-labelledby="tab-p6" hidden>
+  <div class="ficha-cabecera">
+    <div class="contenedor">
+      <div class="numero">PROYECTO 6 · MÓDULO EXPANSOR DE PUENTE H</div>
+      <h1>Rediseño V2 verificado por peor caso: relés de 12 V y excitación por MOSFET</h1>
+      <p class="resumen">Consolidación del puente H para la PSoC 5LP: la etapa de potencia pasa de transistores bipolares a MOSFET de canal N AO3400A (47 µA por pin, margen ×85), relés SRD-12VDC-SL-C alimentados directamente a 12 V y seis diodos Schottky SS34. Trece parámetros de peor caso superan ×1, el costo es de USD 14,36 por pedido y el firmware espera 500 ms antes de reactivar un relé.</p>
+      <div class="hero__chips" style="justify-content:flex-start">
+        <span class="chip">AO3400A</span><span class="chip">SRD-12VDC-SL-C</span><span class="chip">Schottky SS34</span><span class="chip">13 márgenes &gt; ×1</span><span class="chip">USD 14,36</span>
+      </div>
+    </div>
+  </div>
+  <div class="contenedor">
+    <div class="bloque revelar">
+      <h2>Objetivo y planteamiento</h2>
+      <p class="texto-largo">Los pines GPIO del CY8C58LP garantizan apenas 4 mA en salida, mientras un motor DC de 12 V exige amperios e inversión segura de giro. Con una metodología de diseño ágil, guiada por dos revisiones presenciales con el docente, el equipo conservó el núcleo topológico seguro de la V1 e iteró sobre sus limitaciones térmicas y de corriente hasta el Rediseño V2.</p>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Fundamento: por qué relés y no un puente de transistores</h2>
+      <div class="rejilla rejilla-2">
+        <div class="tarjeta">
+          <p>En los puentes de cuatro interruptores discretos (NPN, NPN de potencia o MOSFET P/N), una activación simultánea errónea (estado lógico <span class="mono">11</span>) crea un camino de baja impedancia entre +12 V y tierra: <strong>cortocircuito directo de la fuente</strong>. El DRV8871 integrado protege, pero su costo acerca la lista de materiales al límite de USD 20.</p>
+          <p style="margin:0">Con dos relés SPDT, cada relé conmuta un terminal del motor entre GND y +12 V: los estados <span class="mono">00</span> y <span class="mono">11</span> dejan el motor en frenado dinámico, sin corto, y <span class="mono">10</span> y <span class="mono">01</span> lo hacen girar en sentidos opuestos.</p>
+        </div>
+        <div class="tabla-envoltura">
+          <table>
+            <thead><tr><th>Entradas</th><th>Bornes del motor</th><th>Estado</th></tr></thead>
+            <tbody>
+              <tr><td class="mono">00</td><td>GND / GND</td><td>Frenado dinámico</td></tr>
+              <tr><td class="mono">10</td><td>+12 V / GND</td><td>Giro en un sentido</td></tr>
+              <tr><td class="mono">01</td><td>GND / +12 V</td><td>Giro en sentido opuesto</td></tr>
+              <tr><td class="mono">11</td><td>+12 V / +12 V</td><td class="ok">Frenado, sin cortocircuito</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Evolución V1 → V2</h2>
+      <div class="tabla-envoltura">
+        <table>
+          <thead><tr><th>Subsistema</th><th>Versión V1</th><th>Rediseño V2</th><th>Impacto</th></tr></thead>
+          <tbody>
+            <tr><td>Interfaz GPIO</td><td>NPN MMBT2222A, R<sub>B</sub> = 1 kΩ (4,1 mA/pin)</td><td>MOSFET canal N AO3400A, 1 kΩ en compuerta y pull-down de 100 kΩ</td><td class="ok">4,1 mA → 47 µA por pin (×85)</td></tr>
+            <tr><td>Bobinas y potencia</td><td>Relés de 5 V con R<sub>S</sub> = 100 Ω de 1 W</td><td>SRD-12VDC-SL-C directo desde +12 V</td><td>Sin resistencias serie, menos calor, libera los 5 V del USB</td></tr>
+            <tr><td>Transitorios</td><td>2 diodos 1N4007 en las bobinas</td><td>6 diodos Schottky SS34 (D1–D2 bobinas, D3–D6 bornes del motor)</td><td>Rueda libre inmediata para la corriente del motor</td></tr>
+            <tr><td>PCB y firmware</td><td>Pistas ≥ 1,5 mm, sin temporización</td><td>Pistas de 2,0 / 1,62 mm y espera de 500 ms</td><td>Evita arcos en los contactos al invertir el giro</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Arquitectura final y análisis de peor caso</h2>
+      <p class="texto-largo">La CY8CKIT-059 (U1, alimentada por USB) gobierna las señales P12[0] y P12[1] hacia las compuertas de Q1 y Q2 (AO3400A), con resistencias serie de 1 kΩ y pull-down de 100 kΩ que aseguran el apagado durante el arranque. La potencia entra por la bornera J2 desde una fuente externa de 12 V DC (mínimo 2,5 A) con tierra común. Cada componente se contrastó con su hoja de datos calculando el factor de seguridad como <em>límite del fabricante / exigencia máxima del circuito</em>:</p>
+      <div class="tabla-envoltura">
+        <table>
+          <thead><tr><th>Criterio evaluado</th><th>Margen</th><th>Respaldo</th></tr></thead>
+          <tbody>
+            <tr><td>Fuga de Q en la bobina / I<sub>D</sub> de Q1–Q2</td><td class="mono">×545 / ×128</td><td>Corriente de bobina muy inferior al límite del AO3400A</td></tr>
+            <tr><td>Corriente por pin GPIO de la PSoC</td><td class="mono">×85</td><td>47 µA frente a 4 mA garantizados</td></tr>
+            <tr><td>V<sub>GS</sub> de apagado / I<sub>FSM</sub> de D1–D6</td><td class="mono">×57 / ×22</td><td>Corte firme y alta capacidad de pulso de los SS34</td></tr>
+            <tr><td>Corte del contacto en marcha / tensión inversa D1–D6</td><td class="mono">×6,00 / ×2,90</td><td>Apertura segura con carga inductiva</td></tr>
+            <tr><td>V<sub>GS</sub> máx. / V<sub>DS</sub> apagado / cierre del contacto</td><td class="mono">×2,55 / ×2,17 / ×2,10</td><td>Compuerta y drenador a menos de la mitad del límite</td></tr>
+            <tr><td>Ancho de pista / bobina en frío / tensión máx. de bobina</td><td class="mono">×1,23 / ×1,20 / ×1,09</td><td>El margen más estrecho es la tensión máxima de bobina; todos superan ×1</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Integración física, firmware y viabilidad</h2>
+      <div class="rejilla rejilla-3">
+        <div class="tarjeta"><h3 style="margin-top:0">Conexión real</h3><p style="margin:0">Computador → KitProg (5 V USB); tres conductores de control hacia la placa: GND, P12[0] y P12[1]; fuente externa de 12 V ≥ 2,5 A; motor DC de 12 V.</p></div>
+        <div class="tarjeta"><h3 style="margin-top:0">Protección hardware + firmware</h3><p style="margin:0">Además de la inmunidad topológica al estado 11, el firmware espera 500 ms antes de reactivar un relé para que el rebote mecánico o la inercia del rotor no generen arcos.</p></div>
+        <div class="tarjeta"><h3 style="margin-top:0">Costo</h3><p style="margin:0"><span class="mono" style="font-size:1.6rem;color:var(--vino);font-weight:700">USD 14,36</span><br>por pedido, 28,2 % por debajo del techo de USD 20.</p></div>
+      </div>
+      <div class="galeria" style="margin-top:1.2rem;grid-template-columns:minmax(0,420px)">
+        <figure class="figura figura--alta" tabindex="0"><div class="figura__img"><img src="assets/proyectos/proyecto-06/img/lamina-redisenio-v2.jpg" alt="Lámina técnica del Rediseño V2" loading="lazy"></div><figcaption>Lámina técnica presentada en la segunda revisión: esquemático V2, tabla de estados, márgenes de peor caso, conexión real y costo.</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Documentación y descargas</h2>
+      <div class="descargas">
+        <article class="tarjeta descarga descarga--principal">
+          <span class="descarga__tipo">Informe técnico IEEE · PDF</span>
+          <h3>Rediseño V2 del módulo expansor de puente H</h3>
+          <p>Selección topológica, evolución V1 → V2, peor caso, firmware y viabilidad económica. <span class="peso">556 KB</span></p>
+          <div class="descarga__botones">
+            <a class="btn btn--vino" href="assets/proyectos/proyecto-06/informe-modulo-puente-h-v2.pdf" download><svg aria-hidden="true"><use href="#i-descargar"/></svg>Descargar Informe (PDF)</a>
+            <a class="btn btn--contorno" href="assets/proyectos/proyecto-06/informe-modulo-puente-h-v2.pdf" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ojo"/></svg>Ver PDF</a>
+          </div>
+        </article>
+        <article class="tarjeta descarga">
+          <span class="descarga__tipo">Bitácora · PDF</span>
+          <h3>Bitácora del Proyecto 6</h3>
+          <p>Evidencias P6-E01 a P6-E07 y registro cronológico de decisiones técnicas. <span class="peso">363 KB</span></p>
+          <div class="descarga__botones">
+            <a class="btn btn--contorno" href="assets/proyectos/proyecto-06/bitacora-proyecto-6.pdf" download><svg aria-hidden="true"><use href="#i-descargar"/></svg>Descargar</a>
+            <a class="btn btn--contorno" href="assets/proyectos/proyecto-06/bitacora-proyecto-6.pdf" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-ojo"/></svg>Ver PDF</a>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="bloque revelar">
+      <h2>Conclusiones y aplicaciones</h2>
+      <div class="aprendizajes">
+        <div class="tarjeta aprendizaje"><h3>Iterar sin reiniciar</h3><p>Conservar lo validado en V1 y corregir solo sus limitaciones llevó a una placa reproducible.</p></div>
+        <div class="tarjeta aprendizaje"><h3>Seguridad por topología</h3><p>Con relés, ningún error de programación puede cortocircuitar la fuente.</p></div>
+        <div class="tarjeta aprendizaje"><h3>Aplicación</h3><p>Control bidireccional seguro de motores DC de 12 V desde la PSoC en prácticas de laboratorio.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="pie">
+  <div class="contenedor">
+    <div class="pie__fila">
+      <span class="logo-placa"><img src="assets/img/logo-usco.png" alt="Universidad Surcolombiana" width="123" height="40" loading="lazy"></span>
+      <p><strong>David Perdomo Cardoso</strong> · Integrante del Equipo 6<br>Electrónica Analógica 3 · Programa de Ingeniería Electrónica · Universidad Surcolombiana, Neiva</p>
+    </div>
+    <div class="pie__linea"></div>
+    <p style="font-size:.8rem;opacity:.8">© 2026 David Perdomo Cardoso y Equipo 6. Portafolio con fines educativos. Diseño web original de Daniel García Trujillo, inspirado en la identidad institucional; el logo pertenece a la Universidad Surcolombiana.</p>
+  </div>
+</footer>
+
+<button class="boton-circular volver-arriba" id="volver-arriba" type="button" aria-label="Volver arriba">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" d="M12 19V5m-6 6 6-6 6 6"/></svg>
+</button>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Visor de imágenes">
+  <div class="lightbox__barra">
+    <span class="lightbox__titulo"></span>
+    <button class="lightbox__btn" type="button" data-accion="anterior" aria-label="Anterior">‹</button>
+    <button class="lightbox__btn" type="button" data-accion="siguiente" aria-label="Siguiente">›</button>
+    <button class="lightbox__btn" type="button" data-accion="menos" aria-label="Alejar">−</button>
+    <button class="lightbox__btn" type="button" data-accion="mas" aria-label="Acercar">+</button>
+    <button class="lightbox__btn" type="button" data-accion="restablecer" aria-label="Restablecer zoom">⟲</button>
+    <button class="lightbox__btn" type="button" data-accion="cerrar" aria-label="Cerrar">✕</button>
+  </div>
+  <div class="lightbox__escena"><img alt=""></div>
+</div>
+
+<script src="js/animaciones.js"></script>
+<script src="js/pestanas.js"></script>
+<script src="js/lightbox.js"></script>
+</body>
+</html>
